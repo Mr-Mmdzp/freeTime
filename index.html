@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تمرین جدول تناوبی</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        <span>⚛</span>
+        <h2>Periodic Quiz</h2>
+    </div>
+
+    <div class="lang-menu" id="langMenu">
+
+        <button class="lang-toggle" id="langToggle">
+            <span>文A</span>
+            <span id="currentLang">فارسی</span>
+            <span>⌄</span>
+        </button>
+
+        <div class="lang-dropdown">
+
+            <button class="lang-option fa">
+                فارسی
+            </button>
+
+            <button class="lang-option en">
+                English
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <span class="badge dynamic"
+              data-persian="آماده‌ای؟"
+              data-english="READY?">
+            آماده‌ای؟
+        </span>
+
+        <h1 class="dynamic"
+            data-persian="جدول تناوبی رو قورت بده."
+            data-english="Master the Periodic Table.">
+            جدول تناوبی رو قورت بده.
+        </h1>
+
+        <p class="dynamic"
+           data-persian="گروه رو انتخاب کن، عنصر تصادفی بگیر و خودت رو امتحان کن."
+           data-english="Choose a group, get a random element and test yourself.">
+            گروه رو انتخاب کن، عنصر تصادفی بگیر و خودت رو امتحان کن.
+        </p>
+
+    </section>
+
+
+    <section class="quiz">
+
+        <div class="group-section">
+
+            <h2 class="dynamic"
+                data-persian="گروه مورد نظر"
+                data-english="Choose a group">
+                گروه مورد نظر
+            </h2>
+
+            <div class="groups">
+
+                <button class="groupBtn group1 active">
+                    <strong>1</strong>
+                    <span class="dynamic"
+                          data-persian="فلزات قلیایی"
+                          data-english="Alkali Metals">
+                        فلزات قلیایی
+                    </span>
+                </button>
+
+                <button class="groupBtn group2">
+                    <strong>2</strong>
+                    <span class="dynamic"
+                          data-persian="فلزات قلیایی خاکی"
+                          data-english="Alkaline Earth Metals">
+                        فلزات قلیایی خاکی
+                    </span>
+                </button>
+
+                <button class="groupBtn group18">
+                    <strong>18</strong>
+                    <span class="dynamic"
+                          data-persian="گازهای نجیب"
+                          data-english="Noble Gases">
+                        گازهای نجیب
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button id="randomBtn" class="random-btn">
+
+            <span>↻</span>
+
+            <span class="dynamic"
+                  data-persian="عنصر تصادفی"
+                  data-english="Random Element">
+                عنصر تصادفی
+            </span>
+
+        </button>
+
+
+        <div class="element-card">
+
+            <div class="element-top">
+
+                <span class="small-label dynamic"
+                      data-persian="عنصر انتخاب شده"
+                      data-english="SELECTED ELEMENT">
+                    عنصر انتخاب شده
+                </span>
+
+                <span id="elementNumber">??</span>
+
+            </div>
+
+            <div id="elementSymbol">?</div>
+
+            <h2 id="elementName">???</h2>
+
+        </div>
+
+
+        <div class="inputs">
+
+            <div class="input-box">
+
+                <label class="dynamic"
+                       data-persian="نام عنصر"
+                       data-english="Element Name">
+                    نام عنصر
+                </label>
+
+                <input
+                    id="nameInput"
+                    class="dynamic"
+                    type="text"
+                    data-persian="مثلاً سدیم"
+                    data-english="e.g. Sodium"
+                    placeholder="مثلاً سدیم"
+                >
+
+            </div>
+
+
+            <div class="input-box">
+
+                <label class="dynamic"
+                       data-persian="عدد اتمی"
+                       data-english="Atomic Number">
+                    عدد اتمی
+                </label>
+
+                <input
+                    id="atomicInput"
+                    class="dynamic"
+                    type="number"
+                    data-persian="عدد اتمی را وارد کنید"
+                    data-english="Enter atomic number"
+                    placeholder="عدد اتمی را وارد کنید"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button id="checkBtn" class="check-btn">
+
+            <span class="dynamic"
+                  data-persian="بررسی جواب"
+                  data-english="Check Answer">
+                بررسی جواب
+            </span>
+
+        </button>
+
+
+        <div id="result"></div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <span class="dynamic"
+          data-persian="ساخته شده برای تمرین شیمی"
+          data-english="Built for chemistry practice">
+        ساخته شده برای تمرین شیمی
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
