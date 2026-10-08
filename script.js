@@ -1,6 +1,7 @@
 const langMenu = document.getElementById("langMenu");
 const langToggle = document.getElementById("langToggle");
 const currentLang = document.getElementById("currentLang");
+
 const dynamicT = document.querySelectorAll(".dynamic");
 const langDrop = document.querySelector(".lang-dropdown");
 
@@ -44,6 +45,51 @@ const elements = {
         { symbol: "Ra", name: "رادیم", atomicNumber: 88 }
     ],
 
+    G13: [
+        { symbol: "B", name: "بور", atomicNumber: 5 },
+        { symbol: "Al", name: "آلومینیوم", atomicNumber: 13 },
+        { symbol: "Ga", name: "گالیوم", atomicNumber: 31 },
+        { symbol: "In", name: "ایندیم", atomicNumber: 49 },
+        { symbol: "Tl", name: "تالیم", atomicNumber: 81 },
+        { symbol: "Nh", name: "نیهونیوم", atomicNumber: 113 }
+    ],
+
+    G14: [
+        { symbol: "C", name: "کربن", atomicNumber: 6 },
+        { symbol: "Si", name: "سیلیسیم", atomicNumber: 14 },
+        { symbol: "Ge", name: "ژرمانیم", atomicNumber: 32 },
+        { symbol: "Sn", name: "قلع", atomicNumber: 50 },
+        { symbol: "Pb", name: "سرب", atomicNumber: 82 },
+        { symbol: "Fl", name: "فلروویوم", atomicNumber: 114 }
+    ],
+
+    G15: [
+        { symbol: "N", name: "نیتروژن", atomicNumber: 7 },
+        { symbol: "P", name: "فسفر", atomicNumber: 15 },
+        { symbol: "As", name: "آرسنیک", atomicNumber: 33 },
+        { symbol: "Sb", name: "آنتیموان", atomicNumber: 51 },
+        { symbol: "Bi", name: "بیسموت", atomicNumber: 83 },
+        { symbol: "Mc", name: "موسکوویوم", atomicNumber: 115 }
+    ],
+
+    G16: [
+        { symbol: "O", name: "اکسیژن", atomicNumber: 8 },
+        { symbol: "S", name: "گوگرد", atomicNumber: 16 },
+        { symbol: "Se", name: "سلنیوم", atomicNumber: 34 },
+        { symbol: "Te", name: "تلوریم", atomicNumber: 52 },
+        { symbol: "Po", name: "پولونیوم", atomicNumber: 84 },
+        { symbol: "Lv", name: "لیورموریم", atomicNumber: 116 }
+    ],
+
+    G17: [
+        { symbol: "F", name: "فلوئور", atomicNumber: 9 },
+        { symbol: "Cl", name: "کلر", atomicNumber: 17 },
+        { symbol: "Br", name: "برم", atomicNumber: 35 },
+        { symbol: "I", name: "ید", atomicNumber: 53 },
+        { symbol: "At", name: "آستاتین", atomicNumber: 85 },
+        { symbol: "Ts", name: "تنسین", atomicNumber: 117 }
+    ],
+
     G18: [
         { symbol: "He", name: "هلیوم", atomicNumber: 2 },
         { symbol: "Ne", name: "نئون", atomicNumber: 10 },
@@ -57,14 +103,12 @@ const elements = {
 };
 
 
-// =========================
-// LANGUAGE
-// =========================
+// --------------------
+// Language
+// --------------------
 
 langToggle.addEventListener("click", () => {
-
     langMenu.classList.toggle("open");
-
 });
 
 
@@ -100,7 +144,6 @@ langDrop.addEventListener("click", (e) => {
         document.documentElement.dir = "rtl";
 
         currentLang.textContent = "فارسی";
-
     }
 
 
@@ -120,17 +163,17 @@ langDrop.addEventListener("click", (e) => {
         document.documentElement.dir = "ltr";
 
         currentLang.textContent = "English";
-
     }
+
 
     langMenu.classList.remove("open");
 
 });
 
 
-// =========================
-// GROUP SELECTION
-// =========================
+// --------------------
+// Groups
+// --------------------
 
 groupBtns.forEach(button => {
 
@@ -139,6 +182,7 @@ groupBtns.forEach(button => {
         groupBtns.forEach(btn => {
             btn.classList.remove("active");
         });
+
 
         button.classList.add("active");
 
@@ -151,12 +195,30 @@ groupBtns.forEach(button => {
             group = "G2";
         }
 
+        else if (button.classList.contains("group13")) {
+            group = "G13";
+        }
+
+        else if (button.classList.contains("group14")) {
+            group = "G14";
+        }
+
+        else if (button.classList.contains("group15")) {
+            group = "G15";
+        }
+
+        else if (button.classList.contains("group16")) {
+            group = "G16";
+        }
+
+        else if (button.classList.contains("group17")) {
+            group = "G17";
+        }
+
         else if (button.classList.contains("group18")) {
             group = "G18";
         }
 
-
-        // Reset current quiz
 
         currentElement = null;
 
@@ -168,15 +230,16 @@ groupBtns.forEach(button => {
         atomicInput.value = "";
 
         result.textContent = "";
+        result.className = "";
 
     });
 
 });
 
 
-// =========================
-// RANDOM ELEMENT
-// =========================
+// --------------------
+// Random Element
+// --------------------
 
 randomBtn.addEventListener("click", () => {
 
@@ -190,7 +253,8 @@ randomBtn.addEventListener("click", () => {
 
     elementNumber.textContent = "??";
 
-    elementSymbol.textContent = currentElement.symbol;
+    elementSymbol.textContent =
+        currentElement.symbol;
 
     elementName.textContent = "???";
 
@@ -199,19 +263,23 @@ randomBtn.addEventListener("click", () => {
     atomicInput.value = "";
 
     result.textContent = "";
+    result.className = "";
 
 });
 
 
-// =========================
-// CHECK ANSWER
-// =========================
+// --------------------
+// Check Answer
+// --------------------
 
 checkBtn.addEventListener("click", () => {
 
     if (!currentElement) {
 
-        result.textContent = "اول یک عنصر تصادفی انتخاب کن.";
+        result.textContent =
+            "اول یک عنصر تصادفی انتخاب کن.";
+
+        result.className = "wrong";
 
         return;
     }
@@ -228,7 +296,8 @@ checkBtn.addEventListener("click", () => {
         userName === currentElement.name;
 
     const correctAtomicNumber =
-        userAtomicNumber === String(currentElement.atomicNumber);
+        userAtomicNumber ===
+        String(currentElement.atomicNumber);
 
 
     if (correctName && correctAtomicNumber) {
